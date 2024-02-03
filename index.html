@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="song-container"></div>
+
+  <script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'songlist.txt', true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var lines = xhr.responseText.split('\n');
+        var randomIndex = Math.floor(Math.random() * lines.length);
+        var randomLine = lines[randomIndex];
+
+        document.getElementById('song-container').innerText = randomLine;
+      }
+    };
+    xhr.send();
+  </script>
+</body>
+</html>
